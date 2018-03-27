@@ -27,6 +27,7 @@ public class PanelsFeedAdapter extends BaseAdapter {
     ImageView ivPanelImage;
     private Context mContext;
     private Activity mActivity;
+
     TextToSpeech texttospeech_obj;
     private List<Article> mPanelList;
 
@@ -44,6 +45,7 @@ public class PanelsFeedAdapter extends BaseAdapter {
             }
         }
     });
+
 
         mContext = newContext;
         mActivity = newActivity;
@@ -97,16 +99,17 @@ public class PanelsFeedAdapter extends BaseAdapter {
 
         mImageLoader.displayImage(panelImageUri, ivPanelImage, displayImageOptions);
         tvPanelCaption.setText(panelCaption);
-        final String art=tvPanelCaption.getText().toString();
+        final String text_speech=tvPanelCaption.getText().toString();
         tvPanelCaption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                                texttospeech_obj.speak(art,TextToSpeech.QUEUE_FLUSH, null);
+                                texttospeech_obj.speak(text_speech,TextToSpeech.QUEUE_FLUSH, null);
 
             }
         });
 
         return view;
     }
+
 }
