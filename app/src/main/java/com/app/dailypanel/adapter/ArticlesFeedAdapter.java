@@ -97,7 +97,7 @@ public class ArticlesFeedAdapter extends BaseAdapter {
 
         final String articleId = article.getNodeId();
         String articleImageUri = article.getImageResource();
-        String articleDescription = article.getDescription();
+        final String articleDescription = article.getDescription();
 
         mImageLoader.displayImage(articleImageUri, ivArticleThumbnail, displayImageOptions);
         tvArticleDescription.setText(articleDescription);
@@ -107,6 +107,8 @@ public class ArticlesFeedAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("nodeId", articleId);
+
+               // texttospeech_obj.speak(articleDescription,TextToSpeech.QUEUE_FLUSH, null);
 
                 Intent intent = new Intent(mContext, ReadPanelActivity.class);
                 intent.putExtras(bundle);
@@ -131,6 +133,7 @@ public class ArticlesFeedAdapter extends BaseAdapter {
         String headlineImageUri = mArticleList.get(0).getImageResource();
 
         tvHeadlineDescription.setText(headlineDescription);
+
         final String text_speech=tvHeadlineDescription.getText().toString();
         tvHeadlineDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +150,7 @@ public class ArticlesFeedAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("nodeId", headlineId);
+
 
                 Intent intent = new Intent(mContext, ReadPanelActivity.class);
                 intent.putExtras(bundle);

@@ -37,14 +37,8 @@ public class PanelsFeedAdapter extends BaseAdapter {
 
     public PanelsFeedAdapter(Context newContext, Activity newActivity, List<Article> newPanelList) {
         Log.i(TAG, "PanelsFeedAdapter");
-         texttospeech_obj = new TextToSpeech(newContext.getApplicationContext(), new TextToSpeech.OnInitListener() {
-        @Override
-        public void onInit(int status) {
-            if (status != TextToSpeech.ERROR) {
-                texttospeech_obj.setLanguage(Locale.US);
-            }
-        }
-    });
+
+
 
 
         mContext = newContext;
@@ -63,6 +57,15 @@ public class PanelsFeedAdapter extends BaseAdapter {
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .displayer(new FadeInBitmapDisplayer(200))
                 .build();
+
+        texttospeech_obj = new TextToSpeech(mContext.getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    texttospeech_obj.setLanguage(Locale.US);
+                }
+            }
+        });
     }
 
     @Override
@@ -99,6 +102,7 @@ public class PanelsFeedAdapter extends BaseAdapter {
 
         mImageLoader.displayImage(panelImageUri, ivPanelImage, displayImageOptions);
         tvPanelCaption.setText(panelCaption);
+
         final String text_speech=tvPanelCaption.getText().toString();
         tvPanelCaption.setOnClickListener(new View.OnClickListener() {
             @Override

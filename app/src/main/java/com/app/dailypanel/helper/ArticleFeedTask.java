@@ -68,6 +68,7 @@ public class ArticleFeedTask extends AsyncTask<Void, Integer, Long> {
                     String panelImageSrc;
                     JSONObject imageNodeObject = nodeObject.getJSONObject("Image");
 
+
                     if (imageNodeObject.length() != 0 && imageNodeObject.has("src")) {
                         panelImageSrc = imageNodeObject.optString("src");
                     } else {
